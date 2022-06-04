@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import sn.isi.entities.Roles;
 
 @Repository
-public interface IRoles extends JpaRepository<Roles, Integer> {
-    Roles finByNom(String nom);
+public interface IRolesdao extends JpaRepository<Roles, Integer> {
+    Roles findById(int id);
+    Roles findByNom(String nom);
 }
