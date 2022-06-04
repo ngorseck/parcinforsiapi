@@ -1,10 +1,12 @@
 package sn.isi.service;
 
+import org.springframework.stereotype.Service;
 import sn.isi.entities.Ingenieur;
 
 import java.util.List;
 
-public interface IIngenieur {
+@Service
+public interface IIngenieurService {
     public Ingenieur save (Ingenieur ingenieur);
     public Ingenieur update (Ingenieur ingenieur);
     public int delete (int id);

@@ -22,7 +22,7 @@ public class ParcinfoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Roles roles = new Roles();
-		roles.setNom("ADMIN");
+		roles.setNom("SUPER_ADMIN");
 
 		roles = rolesdao.save(roles);
 		System.out.println(roles.getId());

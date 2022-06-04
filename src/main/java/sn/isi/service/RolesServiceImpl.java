@@ -1,15 +1,17 @@
 package sn.isi.service;
 
+import org.springframework.stereotype.Service;
 import sn.isi.dao.IRolesdao;
 import sn.isi.entities.Roles;
 
 import java.util.List;
 
-public class RolesImpl implements IRoles{
+@Service
+public class RolesServiceImpl implements IRolesService {
     //appel de la couche dao
     private IRolesdao rolesdao;
 
-    public RolesImpl(IRolesdao rolesdao) {
+    public RolesServiceImpl(IRolesdao rolesdao) {
         this.rolesdao = rolesdao;
     }
 

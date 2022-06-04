@@ -1,18 +1,18 @@
 package sn.isi.service;
 
+import org.springframework.stereotype.Service;
 import sn.isi.dao.IIngenieurdao;
-import sn.isi.dao.IRolesdao;
 import sn.isi.entities.Ingenieur;
-import sn.isi.entities.Roles;
 
 import java.util.List;
 
-public class IngenieurImpl implements IIngenieur{
+@Service
+public class IngenieurServiceImpl implements IIngenieurService {
 
     //appel de la couche dao
     private IIngenieurdao ingenieurdao;
 
-    public IngenieurImpl(IIngenieurdao ingenieurdao) {
+    public IngenieurServiceImpl(IIngenieurdao ingenieurdao) {
         this.ingenieurdao = ingenieurdao;
     }
 
