@@ -14,4 +14,6 @@ public interface IIngenieurService {
     public Ingenieur getByEmail (String email);
     public List<Ingenieur> getAll ();
     public Ingenieur login (String email, String password);
+    public Ingenieur addRoleToIngenieur (int idIngenieur, int idRole);
+    public Ingenieur addRolesToIngenieur (int idIngenieur, List<Integer> idRoles);
 }

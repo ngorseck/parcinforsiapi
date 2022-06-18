@@ -1,19 +1,25 @@
 package sn.isi.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import sn.isi.dao.IIngenieurdao;
+import sn.isi.dao.IRolesdao;
 import sn.isi.entities.Ingenieur;
+import sn.isi.entities.Roles;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class IngenieurServiceImpl implements IIngenieurService {
 
     //appel de la couche dao
     private IIngenieurdao ingenieurdao;
+    private IRolesdao rolesdao;
 
-    public IngenieurServiceImpl(IIngenieurdao ingenieurdao) {
+    public IngenieurServiceImpl(IIngenieurdao ingenieurdao, IRolesdao rolesdao) {
         this.ingenieurdao = ingenieurdao;
+        this.rolesdao = rolesdao;
     }
 
     @Override
@@ -55,5 +61,23 @@ public class IngenieurServiceImpl implements IIngenieurService {
     @Override
     public Ingenieur login(String email, String password) {
         return ingenieurdao.login(email, password);
+    }
+
+    @Override
+    public Ingenieur addRoleToIngenieur(int idIngenieur, int idRole) {
+        Ingenieur ingenieur = ingenieurdao.findById(idIngenieur);
+        Roles roles = rolesdao.findById(idRole);
+        ingenieur.getRoles().add(roles);
+        return ingenieur;
+    }
+
+    @Override
+    public Ingenieur addRolesToIngenieur(int idIngenieur, List<Integer> idRoles) {
+        Ingenieur ingenieur = ingenieurdao.findById(idIngenieur);
+        for (int id : idRoles) {
+            Roles roles = rolesdao.findById(id);
+            ingenieur.getRoles().add(roles);
+        }
+        return ingenieur;
     }
 }
